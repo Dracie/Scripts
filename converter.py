@@ -13,7 +13,7 @@ def usage():
 	print('Encoder/Decoder\n\
 Usage: [FORMAT] [e] [STRING TO ENCODE]\n\
        [FORMAT] [d] [STRING TO DECODE]\n\
-       FORMAT KEYWORDS: b32 b64')
+       FORMAT KEYWORDS: b16 b32 b64')
 	sys.exit()
 
 if len(sys.argv) <= 1:
@@ -35,9 +35,19 @@ def b32():
 	else:
 			usage()
 
+def b16():
+	if sys.argv[2] == 'e':
+		print base64.b16encode(sys.argv[3])
+	elif sys.argv[2] == 'd':
+		print base64.b16decode(sys.argv[3])
+	else:
+			usage()
+
 if sys.argv[1] == 'b64':
 	b64()
 elif sys.argv[1] == 'b32':
 	b32()
+elif sys.argv[1] == 'b16':
+	b16()
 else:
 	usage()
